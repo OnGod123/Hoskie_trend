@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Sacramento&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            height: 100vh;
+            font-family: 'Great Vibes', cursive;
+            background-color: #e9eff1;
+            color: #333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            font-weight: bold;
+            font-size: 2.5em;
+            color: white;
+            padding: 10px 20px;
+            background-color: #333; /* Dark background */
+            z-index: 10;
+            font-family: 'Sacramento', cursive; /* Flowery font for header */
+            width: 100%;
+        }
+
+        .login-container {
+            background-color: white;
+            border-radius: 10px;
+            padding: 40px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            width: 400px;
+            text-align: center;
+        }
+
+        h2 {
+            font-family: 'Great Vibes', cursive;
+            font-size: 2em; /* Larger title font size */
+            margin-bottom: 20px;
+        }
+
+        .input-field {
+            width: 100%;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 10px;
+            margin-bottom: 15px;
+            font-family: 'Great Vibes', cursive;
+            transition: border-color 0.3s;
+        }
+
+        .input-field:focus {
+            border-color: #333;
+        }
+
+        .login-button {
+            background: none;
+            border: 1px solid #333;
+            border-radius: 5px;
+            padding: 10px;
+            color: #333;
+            cursor: pointer;
+            font-family: 'Great Vibes', cursive;
+            transition: background-color 0.2s, color 0.2s;
+            width: 100%;
+        }
+
+        .login-button:hover {
+            background-color: black; /* Black background on hover */
+            color: white; /* White text on hover */
+        }
+
+        .social-icons {
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            background-size: cover;
+            background-position: center;
+            cursor: pointer;
+        }
+
+        .facebook { background-image: url('https://img.icons8.com/color/48/000000/facebook-new.png'); }
+        .gmail { background-image: url('https://img.icons8.com/color/48/000000/google-logo.png'); }
+        .instagram { background-image: url('https://img.icons8.com/color/48/000000/instagram-new.png'); }
+    </style>
+</head>
+<body>
+    <div class="header">Fantasy</div>
+    <div class="login-container">
+        <h2>Login</h2>
+        <input type="email" class="input-field" placeholder="Email" required>
+        <input type="password" class="input-field" placeholder="Password" required>
+        <button class="login-button">Login</button>
+        <div class="social-icons">
+            <div class="social-icon facebook" title="Login with Facebook"></div>
+            <div class="social-icon gmail" title="Login with Google"></div>
+            <div class="social-icon instagram" title="Login with Instagram"></div>
+        </div>
+    </div>
+</body>
+</html>

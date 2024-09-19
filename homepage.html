@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Full Height List with Buttons</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            height: 100vh; /* Ensure the body takes the full height */
+            overflow-y: scroll; /* Enable vertical scrolling */
+            position: relative; /* For positioning the header */
+            font-family: 'Dancing Script', cursive; /* Apply curly font to all text */
+            background-color: #f5f5f5; /* Light background for better contrast */
+            color: #333; /* Darker text for readability */
+        }
+
+        .header {
+            position: relative; /* Keep the header at the top left */
+            top: 0; /* Align to the top */
+            left: 0; /* Align to the left */
+            font-weight: bold; /* Bold text */
+            font-size: 2em; /* Size of the font */
+            color: white; /* Header text color */
+            padding: 10px 20px; /* Reduced padding around the text */
+            background-color: black; /* Black background for header */
+            transition: background-color 0.3s; /* Smooth transitions */
+            z-index: 10; /* Ensure it stays above other content */
+        }
+
+        .header:hover {
+            background-color: #333; /* Darker shade on hover */
+        }
+
+        .full-height-list {
+            height: 500vh; /* Total height for 5 items, each 100vh */
+            list-style: none; /* Remove bullet points */
+        }
+
+        .full-height-list li {
+            height: 100vh; /* Each item takes the full viewport height */
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start; /* Align items to the top */
+            align-items: flex-start; /* Align items to the left */
+            background-color: #ffffff; /* Item color set to white */
+            position: relative; /* For positioning buttons */
+            transition: box-shadow 0.3s; /* Smooth transition for box shadow */
+            padding: 20px; /* Space around content */
+        }
+
+        /* Glow effect on hover */
+        body:hover .full-height-list li {
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.8); /* Glow effect */
+        }
+
+        .full-height-list li:hover {
+            background-color: #f0f0f0; /* Change color on hover */
+        }
+
+        .button-container {
+            display: flex; /* Arrange buttons horizontally */
+            position: absolute; /* Position buttons at the top */
+            top: 20px; /* Distance from the top */
+            right: 20px; /* Position at the far right */
+        }
+
+        .button {
+            background: none;
+            border: none;
+            font-size: 1em; /* Font size */
+            padding: 10px 20px; /* Adjusted padding */
+            color: dark; /* Button text color */
+            cursor: pointer;
+            margin: 0 5px; /* Space between buttons */
+            font-family: 'Dancing Script', cursive; /* Font style */
+            position: relative; /* For the pseudo-element */
+        }
+
+        .button::after {
+            content: '';
+            display: block;
+            width: 100%;
+            height: 2px; /* Border thickness */
+            background: transparent; /* Initial color */
+            position: absolute;
+            bottom: -5px; /* Position below the button */
+            left: 0;
+            transition: background-color 0.3s; /* Smooth transition */
+        }
+
+        .button:hover::after {
+            background: black; /* Border color on hover */
+        }
+
+        h2 {
+            margin-top: 80px; /* Space for the title below buttons */
+            font-size: 3em; /* Title font size */
+            color: #000; /* Title color */
+            text-align: left; /* Align the title to the left */
+            transition: transform 0.5s ease; /* Smooth transition for floating effect */
+        }
+
+        .input-field {
+            width: 100%;
+            border: none;
+            border-bottom: 2px solid transparent; /* Underline */
+            margin: 10px 0; /* Space between fields */
+            padding: 5px 0; /* Padding for the input */
+            font-size: 1em; /* Input font size */
+            outline: none; /* Remove outline */
+            font-weight: bold; /* Bold text */
+            color: #333; /* Dark text color */
+            transition: border-color 0.3s; /* Smooth transition */
+        }
+
+        .input-field:hover {
+            border-bottom: 2px solid black; /* Underline color on hover */
+        }
+
+        .radio-group {
+            margin: 10px 0; /* Space between radio groups */
+            font-weight: bold; /* Bold text */
+            color: #333; /* Dark text color */
+        }
+
+        .radio-group label {
+            margin-right: 15px; /* Space between radio buttons */
+            font-size: 1em; /* Font size */
+        }
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const titleElement = document.getElementById('dynamic-title');
+            const newText = "Your Fantasies Are Valid";
+            let index = 0;
+
+            function typeWriter() {
+                if (index < newText.length) {
+                    titleElement.textContent += newText.charAt(index);
+                    index++;
+                    setTimeout(typeWriter, 100); // Adjust typing speed here
+                }
+            }
+
+            // Replace the initial text
+            titleElement.textContent = ""; // Clear initial text
+            typeWriter(); // Start typing effect
+
+            // Floating effect
+            titleElement.style.transform = 'translateX(-100%)'; // Start position
+            setTimeout(() => {
+                titleElement.style.transform = 'translateX(0)'; // Final position
+            }, 100); // Start floating effect shortly after typing starts
+        });
+    </script>
+</head>
+<body>
+    <div class="header">Fantasy</div>
+    <ul class="full-height-list">
+        <li>
+            <div class="button-container">
+                <button class="button">Trends</button>
+                <button class="button">Community</button>
+                <button class="button">Blogs</button>
+                <button class="button">Home</button>
+                <button class="button">Login</button>
+                <button class="button">Signup</button>
+            </div>
+            <h2 id="dynamic-title">Welcome to the First Page</h2>
+        </li>
+        <li>
+            <h2>Input Your Details</h2>
+            <form>
+                <input type="text" class="input-field" placeholder="Name" required>
+                <div class="radio-group">
+                    <p>Relationship Status:</p>
+                    <label><input type="radio" name="relationship" value="single"> Single</label>
+                    <label><input type="radio" name="relationship" value="in_relationship"> In a Relationship</label>
+                    <label><input type="radio" name="relationship" value="engaged"> Engaged</label>
+                    <label><input type="radio" name="relationship" value="married"> Married</label>
+                    <label><input type="radio" name="relationship" value="complicated"> It’s Complicated</label>
+                </div>
+                <div class="radio-group">
+                    <p>Sexual Orientation:</p>
+                    <label><input type="radio" name="orientation" value="gay"> Gay</label>
+                    <label><input type="radio" name="orientation" value="lesbian"> Lesbian</label>
+                    <label><input type="radio" name="orientation" value="straight"> Straight</label>
+                    <label><input type="radio" name="orientation" value="other"> Other</label>
+                </div>
+                <div class="radio-group">
+                    <p>Race:</p>
+                    <label><input type="radio" name="race" value="white"> White</label>
+                    <label><input type="radio" name="race" value="black"> Black</label>
+                    <label><input type="radio" name="race" value="asian"> Asian</label>
+                    <label><input type="radio" name="race" value="hispanic"> Hispanic</label>
+                    <label><input type="radio" name="race" value="other"> Other</label>
+                </div>
+                <input type="text" class="input-field" placeholder="Phone Number" required>
+                <input type="url" class="input-field" placeholder="Social Media API URL" required>
+                <input type="date" class="input-field" placeholder="Birth Date" required>
+                <input type="email" class="input-field" placeholder="Email" required>
+                <input type="password" class="input-field" placeholder="Password" required>
+            </form>
+        </li>
+        <li>Item 3</li>
+        <li>Item 4</li>
+        <li>Item 5</li>
+    </ul>
+</body>
+</html>

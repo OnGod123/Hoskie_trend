@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Blog Thread Page</title>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Sacramento&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            height: 100vh;
+            overflow-y: scroll;
+            font-family: 'Great Vibes', cursive; /* Flowery font for body */
+            background-color: #e9eff1;
+            color: #333;
+        }
+
+        .header {
+            position: relative;
+            top: 0;
+            left: 0;
+            font-weight: bold;
+            font-size: 2.5em;
+            color: white;
+            padding: 10px 20px;
+            background-color: #333; /* Dark background */
+            z-index: 10;
+            font-family: 'Sacramento', cursive; /* Different flowery font for header */
+        }
+
+        .full-height-list {
+            padding-top: 100px; /* Space for the fixed header */
+            list-style: none;
+            padding: 0;
+        }
+
+        .full-height-list li {
+            height: 100vh; /* Each item takes the full viewport height */
+            margin-bottom: 20px; /* Space between items */
+            padding: 15px;
+            display: flex;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .profile {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            margin-right: 15px;
+            background-color: #ccc; /* Placeholder color */
+            background-size: cover;
+            background-position: center;
+        }
+
+        .thread-content {
+            flex: 1; /* Take the remaining space */
+        }
+
+        .username {
+            font-weight: bold;
+            color: #333;
+            font-family: 'Sacramento', cursive; /* Flowery font for username */
+            font-size: 1.3em; /* Slightly larger size */
+        }
+
+        .time {
+            color: #777;
+            font-size: 0.9em;
+            margin-bottom: 10px;
+        }
+
+        .button-container {
+            margin-top: 10px; /* Space for buttons */
+            display: flex;
+            gap: 15px; /* Space between buttons */
+        }
+
+        .button {
+            background: none;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 8px 12px;
+            color: #333;
+            cursor: pointer;
+            transition: background-color 0.2s, color 0.2s;
+            font-family: 'Great Vibes', cursive; /* Flowery font for buttons */
+        }
+
+        .button:hover {
+            background-color: black; /* Black background on hover */
+            color: white; /* White text on hover */
+        }
+
+        h2 {
+            font-family: 'Great Vibes', cursive;
+            font-size: 1.8em; /* Larger title font size */
+            margin-bottom: 5px;
+        }
+
+        .post-description {
+            margin-bottom: 10px;
+            line-height: 1.4;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">Fantasy Video Blog</div>
+    <ul class="full-height-list">
+        <li>
+            <div class="profile" style="background-image: url('user1.jpg');"></div>
+            <div class="thread-content">
+                <div class="username">JohnDoe</div>
+                <div class="time">2 hours ago</div>
+                <h2>Welcome to the Video Blog!</h2>
+                <p class="post-description">This is a sample thread content where users can watch, like, and comment.</p>
+                <div class="button-container">
+                    <button class="button">Like</button>
+                    <button class="button">Comment</button>
+                    <button class="button">Retweet</button>
+                    <button class="button">Unlike</button>
+                    <button class="button">Follow</button>
+                    <button class="button">Not Interested</button>
+                </div>
+            </div>
+        </li>
+        <li>
+            <div class="profile" style="background-image: url('user2.jpg');"></div>
+            <div class="thread-content">
+                <div class="username">JaneSmith</div>
+                <div class="time">1 hour ago</div>
+                <h2>Check Out This New Video!</h2>
+                <p class="post-description">Watch my latest video about web development trends.</p>
+                <div class="button-container">
+                    <button class="button">Like</button>
+                    <button class="button">Comment</button>
+                    <button class="button">Retweet</button>
+                    <button class="button">Unlike</button>
+                    <button class="button">Follow</button>
+                    <button class="button">Not Interested</button>
+                </div>
+            </div>
+        </li>
+        <!-- Add more threads as needed -->
+    </ul>
+</body>
+</html>

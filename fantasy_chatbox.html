@@ -1,0 +1,200 @@
+\<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            height: 100vh; /* Ensure the body takes the full height */
+            overflow-y: scroll; /* Enable vertical scrolling */
+            position: relative; /* For positioning the header */
+            font-family: 'Dancing Script', cursive; /* Apply curly font to all text */
+            background-color: #f5f5f5; /* Light background for better contrast */
+            color: #333; /* Darker text for readability */
+        }
+
+        .header {
+            position: relative; /* Keep the header at the top left */
+            top: 0; /* Align to the top */
+            left: 0; /* Align to the left */
+            font-weight: bold; /* Bold text */
+            font-size: 2em; /* Size of the font */
+            color: white; /* Header text color */
+            padding: 10px 20px; /* Reduced padding around the text */
+            background-color: black; /* Black background for header */
+            z-index: 10; /* Ensure it stays above other content */
+        }
+
+        .chat-container {
+            display: flex; /* Flexbox for chat and options */
+            position: fixed; /* Fixed positioning */
+            bottom: 20px; /* Distance from the bottom */
+            right: 20px; /* Distance from the right */
+        }
+
+        .options {
+            display: none; /* Hide options by default */
+            flex-direction: column; /* Stack options vertically */
+            background-color: white; /* Background for options */
+            padding: 5px; /* Reduced padding for options */
+            border: 1px solid #ccc; /* Border for options */
+            border-radius: 10px; /* Rounded corners */
+            margin-right: 5px; /* Space between options and chatbox */
+            width: 100px; /* Reduced width for options */
+        }
+
+        .options button {
+            margin: 3px 0; /* Space between buttons */
+            background-color: black; /* Button background color */
+            color: white; /* Button text color */
+            border: none; /* Remove border */
+            border-radius: 5px; /* Rounded corners */
+            cursor: pointer; /* Pointer on hover */
+            padding: 8px; /* Padding for buttons */
+            width: 100%; /* Full width of buttons */
+        }
+
+        .options button:hover {
+            background-color: #444; /* Darker button on hover */
+        }
+
+        .chatbox {
+            background-color: white; /* White background for the chatbox */
+            border-radius: 10px; /* Rounded corners */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+            overflow: hidden; /* Prevent overflow */
+            width: 250px; /* Reduced width of the chatbox */
+            height: 250px; /* Reduced height of chatbox */
+        }
+
+        .chat-header {
+            background-color: black; /* Header background */
+            color: white; /* Header text color */
+            padding: 10px; /* Padding for the header */
+            font-weight: bold; /* Bold text */
+            text-align: center; /* Centered text */
+        }
+
+        .chat-messages {
+            height: 150px; /* Fixed height for the message area */
+            overflow-y: auto; /* Enable scrolling for messages */
+            padding: 10px; /* Padding for messages */
+            background-color: #f5f5f5; /* Background for messages */
+        }
+
+        .chat-input {
+            display: flex; /* Use flexbox for input area */
+            padding: 5px; /* Reduced padding for input area */
+        }
+
+        .chat-input textarea {
+            flex: 1; /* Textarea takes up available space */
+            border: 1px solid #ccc; /* Border for textarea */
+            border-radius: 5px; /* Rounded corners */
+            padding: 5px; /* Padding inside textarea */
+            resize: none; /* Prevent resizing */
+            height: 30px; /* Fixed height for textarea */
+        }
+
+        .chat-input button {
+            margin-left: 5px; /* Space between textarea and button */
+            padding: 5px 8px; /* Padding for button */
+            background-color: black; /* Button background */
+            color: white; /* Button text color */
+            border: none; /* Remove border */
+            border-radius: 5px; /* Rounded corners */
+            cursor: pointer; /* Pointer on hover */
+        }
+
+        .chat-input button:hover {
+            background-color: #444; /* Darker button on hover */
+        }
+
+        .toggle-button {
+            background-color: black; /* Toggle button background */
+            color: white; /* Toggle button text color */
+            border: none; /* Remove border */
+            width: 55px; 
+            border-radius: 5px; /* Rounded corners */
+            padding: 5px 10px; /* Padding for toggle button */
+            cursor: pointer; /* Pointer on hover */
+            margin-right: 5px; /* Space between toggle button and options */
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        Fantasy
+    </div>
+
+    <div class="chat-container">
+        <button class="toggle-button" onclick="toggleOptions()">Toggle Options</button>
+        
+        <div class="options" id="optionsPanel">
+            <button onclick="sendVoiceMessage()">Voice </button>
+            <button onclick="sendVideoMessage()">Video </button>
+            <button onclick="sendFile()">Send </button>
+            <button onclick="initiateCall()">Voice </button>
+        </div>
+
+        <div class="chatbox">
+            <div class="chat-header">Chat</div>
+            <div class="chat-messages" id="chatMessages">
+                <!-- Messages will appear here -->
+            </div>
+            <div class="chat-input">
+                <textarea id="chatInput" rows="1" placeholder="Type a message..."></textarea>
+                <button onclick="sendMessage()">Send</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function sendMessage() {
+            const input = document.getElementById('chatInput');
+            const messagesContainer = document.getElementById('chatMessages');
+
+            if (input.value.trim()) {
+                const message = document.createElement('div');
+                message.textContent = input.value;
+                messagesContainer.appendChild(message);
+                input.value = ''; // Clear input after sending
+                messagesContainer.scrollTop = messagesContainer.scrollHeight; // Scroll to bottom
+            }
+        }
+
+        function toggleOptions() {
+            const optionsPanel = document.getElementById('optionsPanel');
+            optionsPanel.style.display = optionsPanel.style.display === 'flex' ? 'none' : 'flex';
+        }
+
+        function sendVoiceMessage() {
+            alert("Voice message sent!");
+            // Logic for sending a voice message can be added here
+        }
+
+        function sendVideoMessage() {
+            alert("Video message sent!");
+            // Logic for sending a video message can be added here
+        }
+
+        function sendFile() {
+            alert("File sent!");
+            // Logic for sending a file can be added here
+        }
+
+        function initiateCall() {
+            alert("Voice call initiated!");
+            // Logic for initiating a voice call can be added here
+        }
+    </script>
+</body>
+</html>
