@@ -1,7 +1,0 @@
-<!-- submit_message.html -->
-<form method="POST" id="messageForm">
-    {% csrf_token %}
-    <input type="text" name="user" placeholder="Your name" required>
-    <textarea name="content" placeholder="Type your message here..." required></textarea>
-    <button type="submit">Submit</button>
-</form>
